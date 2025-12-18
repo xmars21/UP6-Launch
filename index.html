@@ -60,7 +60,9 @@
             RefreshCw: (props) => <Icon {...props} path={<><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></>} />,
             Clipboard: (props) => <Icon {...props} path={<><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></>} />,
             CheckCircle2: (props) => <Icon {...props} path={<><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></>} />,
-            ExternalLink: (props) => <Icon {...props} path={<><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></>} />
+            ExternalLink: (props) => <Icon {...props} path={<><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></>} />,
+            Plus: (props) => <Icon {...props} path={<><path d="M12 5v14"/><path d="M5 12h14"/></>} />,
+            X: (props) => <Icon {...props} path={<><path d="M18 6 6 18"/><path d="m6 6 12 12"/></>} />
         };
 
         // --- Data & Constants ---
@@ -83,15 +85,138 @@
             ]
         };
 
+        // ENRICHED MEDIA LIST
         const MEDIA_LIST = [
-            { id: 1, name: 'NAS Compares', contact: 'Robbie', email: 'robbie@nascompares.com', type: 'Tech/Hardcore', note: '侧重性能/拆解，大概率出视频', status: 'pending' },
-            { id: 2, name: 'PetaPixel', contact: 'Jaron Schneider', email: 'editor@petapixel.com', type: 'Photo/Creative', note: '上次批评过体验，强调屏幕改进', status: 'pending' },
-            { id: 3, name: 'Liliputing', contact: 'Brad Linder', email: 'editor@liliputing.com', type: 'Tech/Geek', note: '发新闻很快，强调Mini PC属性', status: 'pending' },
-            { id: 4, name: 'TechPowerUp', contact: 'Press Team', email: 'press@techpowerup.com', type: 'Tech/News', note: '必发的新闻通稿站点', status: 'pending' },
-            { id: 5, name: 'NotebookCheck', contact: 'Codrut Nistor', email: 'press@notebookcheck.net', type: 'Tech/News', note: '关注新品Launch消息', status: 'pending' },
-            { id: 6, name: 'Macworld', contact: 'Jon Jacobi', email: 'news@macworld.com', type: 'Photo/Workflow', note: '关注雷电4和苹果生态', status: 'pending' },
-            { id: 7, name: 'Fstoppers', contact: 'Ivor Rackham', email: '(需查找/表单)', type: 'Photo/Creative', note: '侧重现场备份工作流', status: 'pending' },
-            { id: 8, name: 'The Gadgeteer', contact: 'Julie Strietelmeier', email: 'julie@the-gadgeteer.com', type: 'Gadget/Review', note: '侧重综合体验', status: 'pending' },
+            { 
+                id: 1, 
+                name: 'NAS Compares', 
+                contact: 'Robbie', 
+                email: 'robbie@nascompares.com', 
+                type: 'Tech/Hardcore', 
+                note: '侧重性能/拆解，大概率出视频', 
+                status: 'pending',
+                ut2_article: 'https://nascompares.com/2024/09/25/unifydrive-ut2-mobile-nas-drive-review/'
+            },
+            { 
+                id: 2, 
+                name: 'PetaPixel', 
+                contact: 'Jaron Schneider', 
+                email: 'editor@petapixel.com', 
+                type: 'Photo/Creative', 
+                note: '上次批评过体验，强调屏幕改进', 
+                status: 'pending',
+                ut2_article: 'https://petapixel.com/2024/10/01/unifydrive-ut2-hands-on-good-ideas-marred-by-a-messy-user-experience/'
+            },
+            { 
+                id: 3, 
+                name: 'Liliputing', 
+                contact: 'Brad Linder', 
+                email: 'editor@liliputing.com', 
+                type: 'Tech/Geek', 
+                note: '发新闻很快，强调Mini PC属性', 
+                status: 'pending',
+                ut2_article: 'https://liliputing.com/unifydrive-ut2-review-a-pocket-sized-nas-that-runs-android/'
+            },
+            { 
+                id: 4, 
+                name: 'TechPowerUp', 
+                contact: 'Press Team', 
+                email: 'press@techpowerup.com', 
+                type: 'Tech/News', 
+                note: '必发的新闻通稿站点', 
+                status: 'pending',
+                ut2_article: 'https://www.techpowerup.com/326981/unifydrive-launches-ut2-portable-nas'
+            },
+            { 
+                id: 5, 
+                name: 'NotebookCheck', 
+                contact: 'Codrut Nistor', 
+                email: 'press@notebookcheck.net', 
+                type: 'Tech/News', 
+                note: '关注新品Launch消息', 
+                status: 'pending',
+                ut2_article: 'https://www.notebookcheck.net/UnifyDrive-UT2-portable-NAS-for-content-creators-launches-on-Kickstarter.893156.0.html'
+            },
+            { 
+                id: 6, 
+                name: 'Macworld', 
+                contact: 'Jon Jacobi', 
+                email: 'jon_jacobi@macworld.com', 
+                type: 'Photo/Workflow', 
+                note: '关注雷电4和苹果生态', 
+                status: 'pending',
+                ut2_article: 'https://www.macworld.com/article/2687722/unifydrive-ut2-review-portable-versatile-nas-for-field-use.html'
+            },
+            { 
+                id: 7, 
+                name: 'Fstoppers', 
+                contact: 'Ivor Rackham', 
+                email: 'ivorcontact@ivorphotography.co.uk', 
+                type: 'Photo/Creative', 
+                note: '侧重现场备份工作流', 
+                status: 'pending',
+                ut2_article: 'https://fstoppers.com/gear/i-didnt-realize-how-much-i-needed-mulitalented-unifydrive-ut2-706577'
+            },
+            { 
+                id: 8, 
+                name: 'The Gadgeteer', 
+                contact: 'Julie Strietelmeier', 
+                email: 'julie@the-gadgeteer.com', 
+                type: 'Gadget/Review', 
+                note: '侧重综合体验', 
+                status: 'pending',
+                ut2_article: 'https://the-gadgeteer.com/2025/07/12/unifydrive-ut2-nas-review-powerful-portable-nas-network-attached-storage-that-does-it-all/'
+            },
+            { 
+                id: 9, 
+                name: 'Geeky Gadgets', 
+                contact: 'Julian Horsey (Exec Editor)', 
+                email: 'julian@geeky-gadgets.com', 
+                type: 'Gadget/News', 
+                note: '对"Ultimate Portable NAS"概念评价高', 
+                status: 'pending',
+                ut2_article: 'https://www.geeky-gadgets.com/portable-nas-unifydrive-ut2/'
+            },
+            { 
+                id: 10, 
+                name: 'Trend Hunter', 
+                contact: 'Michael Hemsworth', 
+                email: 'editors@trendhunter.com', 
+                type: 'Innovation/News', 
+                note: '喜欢新奇特、众筹类硬件新闻', 
+                status: 'pending',
+                ut2_article: 'https://www.trendhunter.com/trends/unifydrive-ut2'
+            },
+            { 
+                id: 11, 
+                name: 'TechRadar Pro', 
+                contact: 'Press Team', 
+                email: 'news@techradar.com', 
+                type: 'Tech/Review', 
+                note: '权威媒体，强调"Creative Sector"应用', 
+                status: 'pending',
+                ut2_article: 'https://www.techradar.com/pro/unifydrive-ut2-review'
+            },
+            { 
+                id: 12, 
+                name: 'Neowin', 
+                contact: 'News Desk', 
+                email: 'news@neowin.net', 
+                type: 'Tech/Review', 
+                note: '评价UT2为"Battery Powered NAS"', 
+                status: 'pending',
+                ut2_article: 'https://www.neowin.net/reviews/review-of-the-unifydrive-ut2-a-battery-powered-portable-nas-device-for-creatives/'
+            },
+            { 
+                id: 13, 
+                name: 'SomeGadgetGuy', 
+                contact: 'Juan Bagnell', 
+                email: 'juan@somegadgetguy.com', 
+                type: 'Video/Influencer', 
+                note: '曾发布详细视频评测，适合寄送样机', 
+                status: 'pending',
+                ut2_article: 'https://www.youtube.com/watch?v=7ojbHLziBz8'
+            }
         ];
 
         const TEMPLATES = {
@@ -204,6 +329,8 @@ UnifyDrive Team`
             const [activeTab, setActiveTab] = useState('dashboard');
             const [tasks, setTasks] = useState(INITIAL_TASKS);
             const [mediaContacts, setMediaContacts] = useState(MEDIA_LIST);
+            const [showAddModal, setShowAddModal] = useState(false);
+            const [newContact, setNewContact] = useState({ name: '', contact: '', email: '', type: 'Tech/News', note: '', ut2_article: '' });
 
             // Load from LocalStorage on mount
             useEffect(() => {
@@ -211,9 +338,27 @@ UnifyDrive Team`
                     const savedTasks = localStorage.getItem('up6_tasks');
                     const savedMedia = localStorage.getItem('up6_media');
                     if (savedTasks) setTasks(JSON.parse(savedTasks));
-                    if (savedMedia) setMediaContacts(JSON.parse(savedMedia));
+                    
+                    // SMART MERGE LOGIC:
+                    // If local storage exists, we want to keep user's statuses, but merge in our new enriched data (MEDIA_LIST).
+                    if (savedMedia) {
+                         const localMedia = JSON.parse(savedMedia);
+                         // Merge strategy: Use our new MEDIA_LIST as the source of truth for contact info,
+                         // but preserve 'status' from local storage if the ID matches.
+                         const mergedMedia = MEDIA_LIST.map(serverItem => {
+                             const localItem = localMedia.find(l => l.id === serverItem.id);
+                             return localItem ? { ...serverItem, status: localItem.status } : serverItem;
+                         });
+                         // Also append any custom added contacts (ID > 13)
+                         const customContacts = localMedia.filter(l => l.id > 13);
+                         setMediaContacts([...mergedMedia, ...customContacts]);
+                    } else {
+                        // First load
+                        setMediaContacts(MEDIA_LIST);
+                    }
                 } catch(e) {
                     console.error("Storage load error", e);
+                    setMediaContacts(MEDIA_LIST);
                 }
             }, []);
 
@@ -238,8 +383,25 @@ UnifyDrive Team`
                 setMediaContacts(prev => prev.map(m => m.id === id ? { ...m, status: newStatus } : m));
             };
 
+            const handleAddContact = (e) => {
+                e.preventDefault();
+                if (!newContact.name) {
+                    alert('请至少填写媒体名称');
+                    return;
+                }
+                const newId = mediaContacts.length > 0 ? Math.max(...mediaContacts.map(m => m.id)) + 1 : 1;
+                const contactToAdd = {
+                    id: newId,
+                    ...newContact,
+                    status: 'pending'
+                };
+                setMediaContacts([...mediaContacts, contactToAdd]);
+                setNewContact({ name: '', contact: '', email: '', type: 'Tech/News', note: '', ut2_article: '' });
+                setShowAddModal(false);
+            };
+
             const resetData = () => {
-                if(confirm('确定要重置所有进度吗？此操作无法撤销。')) {
+                if(confirm('确定要重置所有进度吗？此操作将恢复默认列表（包含最新的UT2链接）。')) {
                     setTasks(INITIAL_TASKS);
                     setMediaContacts(MEDIA_LIST);
                     localStorage.removeItem('up6_tasks');
@@ -299,24 +461,33 @@ UnifyDrive Team`
             );
 
             const renderMediaList = () => (
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden relative">
                     <div className="p-6 border-b border-gray-100 flex justify-between items-center">
                         <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2">
                             <Icons.Users size={20} className="text-blue-500"/> 媒体联络表 (CRM)
                         </h2>
-                        <div className="text-sm text-gray-500">
-                            共 {mediaContacts.length} 家媒体
+                        <div className="flex items-center gap-4">
+                             <div className="text-sm text-gray-500">
+                                共 {mediaContacts.length} 家媒体
+                            </div>
+                            <button 
+                                onClick={() => setShowAddModal(true)}
+                                className="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                            >
+                                <Icons.Plus size={16} /> 添加媒体
+                            </button>
                         </div>
                     </div>
                     <div className="overflow-x-auto">
                         <table className="w-full text-left text-sm">
                             <thead className="bg-gray-50 text-gray-500 uppercase">
                                 <tr>
-                                    <th className="px-6 py-4 font-medium">媒体/编辑</th>
-                                    <th className="px-6 py-4 font-medium">类型/策略</th>
-                                    <th className="px-6 py-4 font-medium">邮箱</th>
-                                    <th className="px-6 py-4 font-medium">状态</th>
-                                    <th className="px-6 py-4 font-medium">操作</th>
+                                    <th className="px-6 py-4 font-medium min-w-[180px]">媒体/编辑</th>
+                                    <th className="px-6 py-4 font-medium min-w-[240px]">类型/策略</th>
+                                    <th className="px-6 py-4 font-medium min-w-[120px]">UT2 报道</th>
+                                    <th className="px-6 py-4 font-medium min-w-[220px]">邮箱</th>
+                                    <th className="px-6 py-4 font-medium min-w-[120px]">状态</th>
+                                    <th className="px-6 py-4 font-medium min-w-[140px]">操作</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-100">
@@ -328,7 +499,16 @@ UnifyDrive Team`
                                         </td>
                                         <td className="px-6 py-4">
                                             <span className="inline-block px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-700 mb-1">{media.type}</span>
-                                            <div className="text-gray-400 text-xs truncate max-w-[200px]" title={media.note}>{media.note}</div>
+                                            <div className="text-gray-400 text-xs text-wrap" title={media.note}>{media.note}</div>
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {media.ut2_article ? (
+                                                <a href={media.ut2_article} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 flex items-center gap-1 text-xs font-medium">
+                                                    <Icons.ExternalLink size={14} /> 查看文章
+                                                </a>
+                                            ) : (
+                                                <span className="text-gray-400 text-xs">-</span>
+                                            )}
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-2">
@@ -399,6 +579,100 @@ UnifyDrive Team`
                 </div>
             );
 
+            const AddMediaModal = () => {
+                if (!showAddModal) return null;
+                return (
+                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                        <div className="bg-white rounded-xl shadow-xl w-full max-w-md mx-4 animate-fade-in">
+                            <div className="flex justify-between items-center p-6 border-b border-gray-100">
+                                <h3 className="text-lg font-bold text-gray-900">添加新媒体联系人</h3>
+                                <button onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-gray-600">
+                                    <Icons.X size={20} />
+                                </button>
+                            </div>
+                            <form onSubmit={handleAddContact} className="p-6 space-y-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">媒体名称 *</label>
+                                    <input 
+                                        type="text" 
+                                        required
+                                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                                        value={newContact.name}
+                                        onChange={e => setNewContact({...newContact, name: e.target.value})}
+                                        placeholder="例如: The Verge"
+                                    />
+                                </div>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">联系人</label>
+                                        <input 
+                                            type="text" 
+                                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                            value={newContact.contact}
+                                            onChange={e => setNewContact({...newContact, contact: e.target.value})}
+                                            placeholder="例如: Nilay Patel"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1">类型</label>
+                                        <select 
+                                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                            value={newContact.type}
+                                            onChange={e => setNewContact({...newContact, type: e.target.value})}
+                                        >
+                                            <option value="Tech/News">Tech/News</option>
+                                            <option value="Tech/Hardcore">Tech/Hardcore</option>
+                                            <option value="Tech/Geek">Tech/Geek</option>
+                                            <option value="Photo/Creative">Photo/Creative</option>
+                                            <option value="Photo/Workflow">Photo/Workflow</option>
+                                            <option value="Gadget/Review">Gadget/Review</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">UT2 报道链接</label>
+                                    <input 
+                                        type="url" 
+                                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        value={newContact.ut2_article}
+                                        onChange={e => setNewContact({...newContact, ut2_article: e.target.value})}
+                                        placeholder="https://..."
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                                    <input 
+                                        type="email" 
+                                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"
+                                        value={newContact.email}
+                                        onChange={e => setNewContact({...newContact, email: e.target.value})}
+                                        placeholder="name@example.com"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">备注/策略</label>
+                                    <textarea 
+                                        className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none h-20 resize-none"
+                                        value={newContact.note}
+                                        onChange={e => setNewContact({...newContact, note: e.target.value})}
+                                        placeholder="例如：发新闻稿即可，关注雷电4性能..."
+                                    ></textarea>
+                                </div>
+                                <div className="pt-2">
+                                    <button 
+                                        type="submit"
+                                        className="w-full bg-blue-600 text-white font-bold py-2.5 rounded-lg hover:bg-blue-700 transition-colors"
+                                    >
+                                        确认添加
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                );
+            };
+
             return (
                 <div className="min-h-screen flex flex-col md:flex-row">
                     {/* Sidebar */}
@@ -447,7 +721,7 @@ UnifyDrive Team`
                              <h1 className="text-lg font-bold text-gray-900">UnifyDrive UP6 Launch</h1>
                         </header>
                         
-                        <div className="p-4 md:p-8 max-w-5xl mx-auto">
+                        <div className="p-4 md:p-8 w-full max-w-[1440px] mx-auto">
                             <div className="mb-8">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-2">
                                     {activeTab === 'dashboard' && '任务总览 & 准备'}
@@ -464,6 +738,7 @@ UnifyDrive Team`
                             </div>
                         </div>
                     </main>
+                    <AddMediaModal />
                 </div>
             );
         }
